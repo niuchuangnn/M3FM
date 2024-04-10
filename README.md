@@ -1,4 +1,5 @@
 # M3FM
+M3FM (medical multimodal-multitask foundation model) is the first-of-its-kind foundation model architecture with an application in lung cancer screening (LCS).
 
 ## Installation
 Assuming [Anaconda](https://www.anaconda.com/) with python 3.9 a step-by-step example for installing this project is as follows:
