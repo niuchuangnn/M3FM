@@ -28,12 +28,6 @@ task_base_dict = {
     'heart': -1.0,
 }
 
-
-hu_range_dict_test = {
-    'nodule': {'min': [-1300, -1299], 'max': [150, 151]},
-    'heart': {'min': [-135, -134], 'max': [225, 226]},
-}
-
 gpu = 0
 crop_size = [128, 192, 224]
 cube_size = [16, 16, 16]
