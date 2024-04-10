@@ -77,29 +77,6 @@ def get_attention_map(img, image_relevance, args):
     return img_att
 
 
-# def show_image_relevance(image_relevance, image, orig_image, args, title_name=None):
-#
-#     if args.task_id == 15:
-#         image_relevance = 1 - image_relevance
-#
-#     fig, axs = plt.subplots(1, 2)
-#     orig_image = (orig_image - orig_image.min()) / (orig_image.max() - orig_image.min())
-#     orig_image = np.array([orig_image, orig_image, orig_image]).transpose([1, 2, 0])
-#     axs[0].imshow(orig_image)
-#     axs[0].axis('off')
-#
-#     image = np.array([image, image, image]).transpose([1, 2, 0])
-#     image = (image - image.min()) / (image.max() - image.min())
-#     vis = show_cam_on_image(image, image_relevance)
-#     vis = np.uint8(255 * vis)
-#     vis = cv2.cvtColor(np.array(vis), cv2.COLOR_RGB2BGR)
-#     axs[1].imshow(vis)
-#     axs[1].axis('off')
-#     if title_name is not None:
-#         fig.suptitle(title_name)
-#     return vis
-
-
 def product_of_list_elements(lst):
     """Calculate the product of all elements in a list."""
     product = 1
@@ -163,11 +140,6 @@ def Visualize(model, data_dict, args):
                                                                          alpha=0.6)  # Adjust alpha as needed
         html += f"<span style='background-color: {hex_color_with_transparency}; margin: 0 2px; padding: 0 2px;'>{token}</span>"
     html += "</p>"
-
-    # print(html)
-    # # Display in Jupyter Notebook or any HTML-supporting environment
-    # from IPython.display import display, HTML
-    # display(HTML(html))
 
     if 'data_size' in data_dict.keys():
         img_show_size = data_dict['data_size'].squeeze()
