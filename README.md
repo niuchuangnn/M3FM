@@ -20,7 +20,7 @@ Download the zip file through this [link](https://drive.google.com/uc?export=dow
 
 ## Run Demo
 
-The first example is to predict lung cancer risk with multimodal data from the NLST dataset. The ground-truth is the patient was diagnosed lung cancer in 1 year.
+The first example is to predict lung cancer risk with multimodal data from the NLST dataset. The truth is that the patient was diagnosed with lung cancer in 1 year after screening.
 Here are two the inputs:
 
 ```shell
