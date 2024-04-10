@@ -1,4 +1,3 @@
-import argparse
 import torch
 from util import ConfigFile
 import models.m3fm as m3fm
@@ -24,10 +23,17 @@ def Inference(input_data, vis=False):
 
     if vis:
         output_dict, txt_html, img, img_att = Visualize(model, data_dict, args)
+
+        for k, v in output_dict.items():
+            output_dict[k] = list(v.cpu().squeeze().numpy())
+
         return output_dict, txt_html, img, img_att
     else:
         model.eval()
         with torch.no_grad():
             output_dict = model(data_dict)
+
+        for k, v in output_dict.items():
+            output_dict[k] = list(v.cpu().squeeze().numpy())
 
         return output_dict

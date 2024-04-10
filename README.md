@@ -1,4 +1,4 @@
-# M3FM (In Updating)
+# M3FM
 M3FM (medical multimodal-multitask foundation model) is the first-of-its-kind foundation model architecture with an application in lung cancer screening (LCS).
 
 ## Installation
@@ -16,15 +16,60 @@ cd M3FM
 ```
 
 ## Prepare Demo Data
-Download the zip file through this [link](https://drive.google.com/uc?export=download&id=1QJer00vxumElsZIvdpdJLcD_6jeCbX4j), unzip it to the root folder, and then you have ```~/M3FM/demo_data```.
+Download the zip file through this [link](https://drive.google.com/uc?export=download&id=1QJer00vxumElsZIvdpdJLcD_6jeCbX4j), manually unzip or run ```python unzip_demo_data.py``` to unzip it under the root folder, and then you have ```~/M3FM/demo_data```.
 
 ## Run Demo
 
+The first example is to predict lung cancer risk with multimodal data from the NLST dataset. The ground-truth is the patient was diagnosed lung cancer in 1 year.
+Here are two the inputs:
+
+```shell
+input_data = {
+    'ct_path': 'demo_data/ct_npy/cancer_risk.npy',  # CT data
+    'pixel_size': [2.0, 0.53, 0.53],  # physical size of CT voxels
+    'coords': {'cancer_risk': [7, 132, 112, 450, 233, 490]},  # lung bounding box coordinates
+    'clinical_txt': "The patient is 68.0 years old. Gender is Female. Race is white. Ethnicity is neither hispanic nor latino. Height is 62.0 inches. Weight is 134.0 pounds. Education is associate degree/ some college. Current smoker. Smoking duration is 37.5 pack years. Smoking intensity is 15.0 cigarettes per day. The patient had diabetes diagnosed at 68.0 years old. The patient had hypertension diagnosed at 64.0 years old. Patient's brother(s) (including half-brothers) have lung cancer. Patient's mother have lung cancer.",
+    'question': 'Predict the lung cancer risk over six years.',
+    'config_file': 'config_files/config_m3mf_cancer_risk.py'
+}
+```
+The second example is to predict the cardiovascular abnormality with mulitmodal data from the NLST dataset. The patient was reported having cardiovascular abnormality.
 ```shell script
-python inference_demo.py
+input_data = {
+    'ct_path': 'demo_data/ct_npy/heart.npy', # CT data
+    'pixel_size': [2.50, 0.57, 0.57], # physical size of CT voxels
+    'coords': {'heart': [52, 119, 120, 290, 189, 428]},
+    'clinical_txt': "The patient is 64.0 years old. Gender is Female. Race is white. Ethnicity is neither hispanic nor latino. Height is 65.0 inches. Weight is 130.0 pounds. Education is high school graduate/ged. Former smoker. Smoking duration is 46.0 pack years. Smoking intensity is 20.0 cigarettes per day. 1.0 years since quit smoking. The patient had hypertension diagnosed at 56.0 years old. The patient had pneumonia diagnosed at 61.0 years old. The patient had stroke diagnosed at 60.0 years old. Patient's mother have lung cancer.",
+    'question': 'Is there any significant cardiovascular abnormality?',
+    'config_file': 'config_files/config_m3mf_heart.py'
+}
 ```
 
-or check ```inference_demo_not.ipynb```
+Use the following APIs to get the predictions:
+
+```shell
+from inference import Inference
+output_dict = Inference(input_data)
+
+## lung cancer risk prediction
+print('Output', output_dict)
+# {'cancer_risk': [0.9028023, 0.75654167, 0.70547664, 0.5618707, 0.52376777, 0.5138244]}
+# the cancer risk over 6 years.
+
+## Cardiovascular abnormality
+print('Output', output_dict['heart'][1])
+# CVD score: 0.999666
+```
+
+Use the following APIs to get both predictions and relevance maps on CT and clinical text:
+
+```shell
+from inference import Inference
+output_dict, txt_html, img, img_att = Inference(input_data, vis=True)
+```
+Here ```txt_html``` is the clinical text with heatmap colors, ```img``` is the input CT data, and ```img_att``` is the input CT data with heatmap colors.
+
+Check ```inference_demo_note.ipynb``` for both CT and clinical text visualization.
 
 ### License
 This project is under the MIT license. See [LICENSE](LICENSE) for details.

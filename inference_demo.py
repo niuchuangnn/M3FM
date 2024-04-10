@@ -18,20 +18,6 @@ def show_image_att(imgs, img_atts):
     plt.show()
 
 
-## CVD diagnosis demo
-input_data = {
-    'ct_path': 'demo_data/ct_npy/heart.npy',
-    'pixel_size': [2.50, 0.57, 0.57],
-    'coords': {'heart': [52, 119, 120, 290, 189, 428]},
-    'clinical_txt': "The patient is 64.0 years old. Gender is Female. Race is white. Ethnicity is neither hispanic nor latino. Height is 65.0 inches. Weight is 130.0 pounds. Education is high school graduate/ged. Former smoker. Smoking duration is 46.0 pack years. Smoking intensity is 20.0 cigarettes per day. 1.0 years since quit smoking. The patient had hypertension diagnosed at 56.0 years old. The patient had pneumonia diagnosed at 61.0 years old. The patient had stroke diagnosed at 60.0 years old. Patient's mother have lung cancer.",
-    'question': 'Is there any significant cardiovascular abnormality?',
-    'config_file': 'config_files/config_m3mf_heart.py'
-}
-
-output_dict, txt_html, img, img_att = Inference(input_data, vis=True)
-show_image_att(img, img_att)
-print('Output', output_dict)
-
 ## cancer risk demo
 input_data = {
     'ct_path': 'demo_data/ct_npy/cancer_risk.npy',
@@ -44,4 +30,21 @@ input_data = {
 
 output_dict, txt_html, img, img_att = Inference(input_data, vis=True)
 show_image_att(img, img_att)
-print('Output', output_dict)
+print(output_dict)
+
+
+## CVD diagnosis demo
+input_data = {
+    'ct_path': 'demo_data/ct_npy/heart.npy',
+    'pixel_size': [2.50, 0.57, 0.57],
+    'coords': {'heart': [52, 119, 120, 290, 189, 428]},
+    'clinical_txt': "The patient is 64.0 years old. Gender is Female. Race is white. Ethnicity is neither hispanic nor latino. Height is 65.0 inches. Weight is 130.0 pounds. Education is high school graduate/ged. Former smoker. Smoking duration is 46.0 pack years. Smoking intensity is 20.0 cigarettes per day. 1.0 years since quit smoking. The patient had hypertension diagnosed at 56.0 years old. The patient had pneumonia diagnosed at 61.0 years old. The patient had stroke diagnosed at 60.0 years old. Patient's mother have lung cancer.",
+    'question': 'Is there any significant cardiovascular abnormality?',
+    'config_file': 'config_files/config_m3mf_heart.py'
+}
+
+output_dict, txt_html, img, img_att = Inference(input_data, vis=True)
+show_image_att(img, img_att)
+print('CVD score:', output_dict['heart'][1])
+
+
