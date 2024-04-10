@@ -939,38 +939,6 @@ def m3fm_base(**kwargs):
     return model
 
 
-def m3fm_base1024(**kwargs):
-    window_blocs_indexes = []  # list(range(0, 5)) + list(range(6, 11)) + list(range(12, 17)) + list(range(18, 23))
-    window_blocs_indexes_ta = []
-    window_blocs_indexes_de = []
-    model = M3FM(
-        img_size=(16, 512, 512),
-        in_chans=1,
-        patch_size=(4, 16, 16),
-        window_size=(1, 4, 4),
-        window_block_indexes=(),
-        embed_dim_img=1024,
-        depth=12,
-        num_heads=16,
-        ta_embed_dim=1024,
-        ta_prompt_dim=1024,
-        ta_depth=4,
-        ta_num_heads=16,
-        mlp_ratio=4.0,
-        norm_layer=partial(nn.LayerNorm, eps=1e-6),
-        no_qkv_bias=False,
-        sep_pos_embed=True,
-        trunc_init=False,
-        # use_act_checkpoint=True,
-        drop_path=0.0,
-        drop_path_ta=0.0,
-        cls_embed_img=True,
-        txt_embed_dim=768,
-        **kwargs,
-    )
-    return model
-
-
 def m3fm_large(**kwargs):
     window_blocs_indexes = []  # list(range(0, 5)) + list(range(6, 11)) + list(range(12, 17)) + list(range(18, 23))
     window_blocs_indexes_ta = []
