@@ -26,7 +26,7 @@ python inference_demo.py
 or check ```inference_demo_not.ipynb```
 
 ### License
-This project is under the Apache 2.0 license. See [LICENSE](LICENSE) for details.
+This project is under the MIT license. See [LICENSE](LICENSE) for details.
 
 ## Citation
 
