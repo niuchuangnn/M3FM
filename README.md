@@ -67,7 +67,7 @@ Use the following APIs to get both predictions and relevance maps on CT and clin
 from inference import Inference
 output_dict, txt_html, img, img_att = Inference(input_data, vis=True)
 ```
-Here ```txt_html``` is the clinical text with heatmap colors, ```img``` is the input CT data, and ```img_att``` is the input CT data with heatmap colors.
+Here ```txt_html``` is the clinical text with heatmap colors in html format, ```img``` is the input CT data, and ```img_att``` is the input CT data with heatmap colors.
 
 Check [inference_demo_note.ipynb](https://github.com/niuchuangnn/M3FM/blob/main/inference_demo_note.ipynb) for both CT and clinical text visualization.
 
