@@ -71,7 +71,7 @@ Here ```txt_html``` is the clinical text with heatmap colors in html format, ```
 
 Check [inference_demo_note.ipynb](https://github.com/niuchuangnn/M3FM/blob/main/inference_demo_note.ipynb) for both CT and clinical text visualization.
 
-### License
+## License
 This project is under the MIT license. See [LICENSE](LICENSE) for details.
 
 ## Citation
