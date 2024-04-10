@@ -1,4 +1,4 @@
-# M3FM
+# M3FM (In Updating)
 M3FM (medical multimodal-multitask foundation model) is the first-of-its-kind foundation model architecture with an application in lung cancer screening (LCS).
 
 ## Installation
