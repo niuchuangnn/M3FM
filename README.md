@@ -1,8 +1,12 @@
 # M3FM
 M3FM (medical multimodal-multitask foundation model) is the first-of-its-kind foundation model architecture with an application in lung cancer screening (LCS).
+M3FM can flexibly adapt to new tasks with a small out-of-distribution dataset, effectively handle various combinations of multimodal data, and efficiently process high-dimensional images at multiple scales.
+In a broader sense, as a specialty-oriented generalist medical AI (SOGMAI) model, M3FM innovates lung cancer management and related tasks.
+This SOGMAI approach paves the way for similar breakthroughs in other areas of medicine, closing the gap between specialists and the generalist.![image](https://github.com/niuchuangnn/M3FM/assets/12785453/e6695020-68f8-4952-899a-c7c8cd8c22a6)
+
 
 ## Installation
-Assuming [Anaconda](https://www.anaconda.com/) with python 3.9 installed, the following are step-by-step commands for setting up the environment:
+Assuming [Anaconda](https://www.anaconda.com/) with Python 3.9 installed, the following are step-by-step commands for setting up the environment:
 
 ```shell script
 conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia
@@ -15,13 +19,13 @@ git clone https://github.com/niuchuangnn/M3FM.git
 cd M3FM
 ```
 
-## Prepare Demo Data
-Download the zip file through this [link](https://drive.google.com/uc?export=download&id=1QJer00vxumElsZIvdpdJLcD_6jeCbX4j), manually unzip or run ```python unzip_demo_data.py``` to unzip it under the root folder, and then you have ```~/M3FM/demo_data```.
+## Prepare Data
+Download the zip file through this [link](https://drive.google.com/uc?export=download&id=1QJer00vxumElsZIvdpdJLcD_6jeCbX4j), manually unzip or run ```python unzip_demo_data.py``` to unzip it under the root folder. Then, you will have ```~/M3FM/demo_data```.
 
 ## Run Demo
 
-The first example is to predict lung cancer risk with multimodal data from the NLST dataset. The truth is that the patient was diagnosed with lung cancer in 1 year after screening.
-Here are two the inputs:
+The first example is the prediction of lung cancer risk with multimodal data from the NLST dataset. The ground truth is defined as the clinical evidence that the patient was diagnosed with lung cancer within 1 year after screening.
+Here are the inputs:
 
 ```shell
 input_data = {
@@ -33,7 +37,7 @@ input_data = {
     'config_file': 'config_files/config_m3mf_cancer_risk.py'
 }
 ```
-The second example is to predict the cardiovascular abnormality with mulitmodal data from the NLST dataset. The patient was reported having cardiovascular abnormality.
+The second example is the prediction of cardiovascular abnormality with multimodal data from the NLST dataset. The patient was reported having cardiovascular abnormality.
 ```shell script
 input_data = {
     'ct_path': 'demo_data/ct_npy/heart.npy', # CT data
@@ -61,15 +65,15 @@ print('Output', output_dict['heart'][1])
 # CVD score: 0.999666
 ```
 
-Use the following APIs to get both predictions and relevance maps on CT and clinical text:
+Use the following APIs to obtain both predictions and relevance maps on CT and clinical text:
 
 ```shell
 from inference import Inference
 output_dict, txt_html, img, img_att = Inference(input_data, vis=True)
 ```
-Here ```txt_html``` is the clinical text with heatmap colors in html format, ```img``` is the input CT data, and ```img_att``` is the input CT data with heatmap colors.
+Here ```txt_html``` is the clinical text with heatmap colors the in HTML format, ```img``` is the input CT data, and ```img_att``` is the input CT data with heatmap colors.
 
-Check [inference_demo_note.ipynb](https://github.com/niuchuangnn/M3FM/blob/main/inference_demo_note.ipynb) for both CT and clinical text visualization.
+Check [inference_demo_note.ipynb](https://github.com/niuchuangnn/M3FM/blob/main/inference_demo_note.ipynb) for visualization with both CT and clinical text.
 
 ## License
 This project is under the MIT license. See [LICENSE](LICENSE) for details.
