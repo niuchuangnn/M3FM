@@ -1,8 +1,10 @@
 # M3FM
-M3FM (medical multimodal-multitask foundation model) is the first-of-its-kind foundation model architecture with an application in lung cancer screening (LCS).
+
+<div style="text-align: justify"> M3FM (medical multimodal-multitask foundation model) is the first-of-its-kind foundation model architecture with an application in lung cancer screening (LCS).
 M3FM can flexibly adapt to new tasks with a small out-of-distribution dataset, effectively handle various combinations of multimodal data, and efficiently process high-dimensional images at multiple scales.
 In a broader sense, as a specialty-oriented generalist medical AI (SOGMAI) model, M3FM innovates lung cancer management and related tasks.
-This SOGMAI approach paves the way for similar breakthroughs in other areas of medicine, closing the gap between specialists and the generalist.
+This SOGMAI approach paves the way for similar breakthroughs in other areas of medicine, closing the gap between specialists and the generalist. </div>
+
 
 
 ## Installation
