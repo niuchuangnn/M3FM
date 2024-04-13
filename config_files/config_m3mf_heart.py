@@ -34,4 +34,4 @@ cube_size = [16, 16, 16]
 hu_range = [-135, 225]
 data_name = ['heart']
 task_id = 12
-model_weight = 'demo_data/pretrained_models/model_heart.pth'
+model_weight = 'demo_data/model_heart.pth'

@@ -15,8 +15,7 @@ def Inference(input_data, vis=False):
     model.cuda(args.gpu)
 
     state_dict = torch.load(args.model_weight, map_location='cpu')
-    model.load_state_dict(state_dict)
-    print("model weight loaded.")
+    model.load_state_dict(state_dict, strict=False)
 
     data_dict = get_data(input_data, args)
     data_dict['gpu'] = args.gpu

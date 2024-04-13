@@ -90,13 +90,13 @@ def get_data(input_dict, args):
     size_embed = get_sincos_size_embed(embed_dim, sizes)
     size_embed = torch.from_numpy(size_embed).to(torch.float32)
 
-    question_embed = txt2embed([question])
-    question_ids = torch.LongTensor(question_embed['input_ids'])
-    question_masks = torch.LongTensor(question_embed['attention_mask'])
+    question_ids, question_masks = txt2embed(question)
+    question_ids = torch.LongTensor(question_ids).unsqueeze(0)
+    question_masks = torch.LongTensor(question_masks).unsqueeze(0)
 
-    txt_embed = txt2embed([clinical_txt], max_length=160)
-    txt_ids = torch.LongTensor(txt_embed['input_ids'])
-    txt_masks = torch.LongTensor(txt_embed['attention_mask'])
+    txt_ids, txt_masks = txt2embed(clinical_txt, max_length=160)
+    txt_ids = torch.LongTensor(txt_ids).unsqueeze(0)
+    txt_masks = torch.LongTensor(txt_masks).unsqueeze(0)
     data_dict = {'data': data.unsqueeze(0), 'questions': question,
                  'questions_ids': question_ids.unsqueeze(0), 'questions_mask': question_masks.unsqueeze(0),
                  'data_size': torch.LongTensor(crop_size).unsqueeze(0),

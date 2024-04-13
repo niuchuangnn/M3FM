@@ -1,8 +1,9 @@
 import importlib.util
 import sys
-from transformers import RobertaTokenizer
 import numpy as np
-txt_tokenizer = RobertaTokenizer.from_pretrained('demo_data/pretrained_models/roberta-base')
+from models.text_tokenizer import TextTokenizer
+txt_tokenizer = TextTokenizer('demo_data/vocab.json',
+                              'demo_data/merges.txt')
 
 
 def import_py_file(path):
@@ -54,14 +55,8 @@ class ConfigFile:
 
 
 def txt2embed(txt_list, max_length=50):
-    encoding_txt = txt_tokenizer(
-        txt_list,
-        padding="max_length",
-        truncation=True,
-        max_length=max_length,
-        return_special_tokens_mask=True,
-    )
-    return encoding_txt
+    token_ids, attn_mask = txt_tokenizer(txt_list, max_length)
+    return token_ids, attn_mask
 
 
 def embed2tokens(ids):

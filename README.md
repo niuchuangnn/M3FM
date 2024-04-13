@@ -12,7 +12,6 @@ Assuming [Anaconda](https://www.anaconda.com/) with Python 3.9 installed, the fo
 
 ```shell script
 conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia
-pip install transformers==4.17.0
 pip install fairscale
 pip install opencv-python
 pip install matplotlib==3.7.1
@@ -22,11 +21,11 @@ cd M3FM
 ```
 
 ## Prepare Data
-Download the zip file through this [link](https://drive.google.com/uc?export=download&id=1QJer00vxumElsZIvdpdJLcD_6jeCbX4j), manually unzip or run ```python unzip_demo_data.py``` to unzip it under the root folder. Then, you will have ```~/M3FM/demo_data```.
+Download the zip file through this [link](https://drive.google.com/uc?export=download&id=1BqEtw6SXaqeh-deqRjihD7vy6j2HCmWa), manually unzip or run ```python unzip_demo_data.py``` to unzip it under the root folder. Then, you will have ```~/M3FM/demo_data```.
 
 ## Run Demo
 
-The first example is the prediction of lung cancer risk with multimodal data from the NLST dataset. The ground truth is defined as the clinical evidence that the patient was diagnosed with lung cancer within 1 year after screening.
+The first example is the prediction of lung cancer risk with multimodal data from the NLST dataset. The clinical evidence is that the patient was diagnosed with lung cancer within 1 year after screening.
 Here are the inputs:
 
 ```shell

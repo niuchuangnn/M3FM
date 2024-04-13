@@ -36,4 +36,4 @@ cube_size = [16, 16, 16]
 hu_range = [-1300, 150]
 data_name = ['cancer_risk']
 task_id = 15
-model_weight = 'demo_data/pretrained_models/model_cancer_risk.pth'
+model_weight = 'demo_data/model_cancer_risk.pth'
