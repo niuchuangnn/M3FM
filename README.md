@@ -83,7 +83,7 @@ This project is under the MIT license. See [LICENSE](LICENSE) for details.
 
 ```shell
 @misc{niu2024medical,
-      title={Medical Multimodal-Multitask Foundation Model for Lung Cancer Screening}, 
+      title={Specialty-Oriented Generalist Medical AI for Chest CT Screening}, 
       author={Chuang Niu and Qing Lyu and Christopher D. Carothers and Parisa Kaviani and Josh Tan and Pingkun Yan and Mannudeep K. Kalra and Christopher T. Whitlow and Ge Wang},
       year={2024},
       eprint={2304.02649},
